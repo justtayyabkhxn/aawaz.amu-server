@@ -4,6 +4,8 @@ import dotenv from 'dotenv';
 import cors from 'cors';               
 import { connectDB } from './config/db';
 import authRoutes from './routes/authRoutes';
+import userRoutes from "./routes/userRoutes";
+
 
 dotenv.config();
 
@@ -27,6 +29,7 @@ app.use(cors({
 app.use(express.json());
 
 app.use('/api', authRoutes);
+app.use("/api/user", userRoutes);
 
 connectDB().then(() => {
   app.listen(PORT, () => {
